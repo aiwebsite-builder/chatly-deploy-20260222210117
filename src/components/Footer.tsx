@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa'; // Brand icons
 
-export default function Footer() {
+interface FooterProps {
+  setPage: (page: string) => void;
+}
+
+export default function Footer({ setPage }: FooterProps) {
   return (
     <motion.footer
       initial={{ opacity: 0, y: 20 }}
@@ -13,10 +17,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         {/* Logo and Copyright */}
         <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
-          <div className="flex items-center mb-4">
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setPage('home')}
+            className="flex items-center mb-4 focus:outline-none"
+          >
             <span className="text-2xl font-bold text-neutral-100">Stellar</span>
             <span className="text-2xl font-bold text-indigo-500">.</span>
-          </div>
+          </motion.button>
           <p className="text-gray-500">&copy; {new Date().getFullYear()} Stellar Inc. All rights reserved.</p>
         </div>
 
@@ -25,25 +33,26 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-neutral-100 mb-4 uppercase text-xs tracking-wider">Product</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Integrations</a></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Features</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Pricing</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Integrations</motion.button></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-neutral-100 mb-4 uppercase text-xs tracking-wider">Company</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Blog</a></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">About Us</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Careers</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Blog</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('contact')} className="hover:text-neutral-200 transition-colors">Contact</motion.button></li> {/* New contact link */}
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-neutral-100 mb-4 uppercase text-xs tracking-wider">Resources</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Support</a></li>
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Docs</a></li>
-              <li><a href="#" className="hover:text-neutral-200 transition-colors">Legal</a></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Support</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Docs</motion.button></li>
+              <li><motion.button whileTap={{scale: 0.98}} onClick={() => setPage('home')} className="hover:text-neutral-200 transition-colors">Legal</motion.button></li>
             </ul>
           </div>
         </div>

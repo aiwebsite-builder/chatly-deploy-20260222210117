@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react'; // Example icon
+import { ChevronRight } from 'lucide-react'; 
 
-export default function Header() {
+interface HeaderProps {
+  setPage: (page: string) => void;
+}
+
+export default function Header({ setPage }: HeaderProps) {
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -11,19 +15,38 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center">
+        <motion.button
+          whileTap={{ scale: 0.98 }}
+          onClick={() => setPage('home')}
+          className="flex items-center focus:outline-none"
+        >
           <span className="text-2xl font-bold text-neutral-100">Stellar</span>
           <span className="text-2xl font-bold text-indigo-500">.</span>
-        </div>
+        </motion.button>
 
         {/* Navigation / Actions */}
-        <nav className="flex items-center space-x-4">
+        <nav className="flex items-center space-x-6">
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setPage('home')}
+            className="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+          >
+            Home
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setPage('contact')} // New contact button
+            className="text-neutral-300 hover:text-neutral-100 transition-colors text-sm font-medium"
+          >
+            Contact
+          </motion.button>
+          
           <motion.button
             whileTap={{ scale: 0.98 }}
             className="flex items-center bg-white text-black hover:bg-neutral-200 transition-colors rounded-full px-5 py-2 text-sm font-medium"
           >
             Sign In
-            <ChevronRight className="w-4 h-4 ml-1 -mr-1" />
+            {/* Removed ChevronRight for cleaner button style, assuming this goes to an external auth page */}
           </motion.button>
         </nav>
       </div>
